@@ -25,6 +25,11 @@ public class CourtResource implements CourtController{
         return ResponseEntity.ok(courtService.get(id));
     }
 
+    @Override
+    public ResponseEntity<CourtSportOut> getFullInfo(String id) {
+        return ResponseEntity.ok(courtService.getFullInfo(id));
+    }
+
     // @Override
     // public ResponseEntity<CourtOut> update(String id, CourtIn in) {
     //     return ResponseEntity.ok(courtService.update(id, in));

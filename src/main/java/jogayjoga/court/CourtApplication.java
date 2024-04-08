@@ -6,7 +6,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 //caso erro tirar aqui o base packages
-@EnableFeignClients
+@EnableFeignClients(basePackages = {"jogayjoga.sport"})
 @EnableDiscoveryClient
 @SpringBootApplication
 public class CourtApplication {
