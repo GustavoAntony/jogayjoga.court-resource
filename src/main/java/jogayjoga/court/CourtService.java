@@ -31,19 +31,19 @@ public class CourtService {
     public CourtSportOut getFullInfo(String id){
         Court court = courtRepository.findById(id).map(model -> model.to()).orElse(null);
         if (null == court) return null;
-        String sport_id = null;
+        String sport_name = null;
         ResponseEntity<SportOut> response = sportController.get(id);
         if (response != null && response.getBody() != null) {
-            sport_id = response.getBody().id();
+            sport_name = response.getBody().name();
         }
         else{
-            sport_id = "";
+            sport_name = "";
         }
         return CourtSportOut.builder()
             .id(court.id())
             .name(court.name())
             .address(court.address())
-            .sportId(sport_id)
+            .sportName(sport_name)
             .build();
     }
 

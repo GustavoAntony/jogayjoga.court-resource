@@ -36,7 +36,7 @@ public class CourtModel {
     private Integer capacity;
 
     @Column(name = "id_sport")
-    private Integer sportId;
+    private String sportId;
 
     public CourtModel(Court in){
         this.id = in.id();

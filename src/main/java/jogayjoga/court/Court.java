@@ -16,5 +16,5 @@ public class Court {
     private String name;
     private String address;
     private Integer capacity;
-    private Integer sportId;
+    private String sportId;
 }
