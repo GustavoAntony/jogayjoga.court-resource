@@ -1,0 +1,32 @@
+server:
+  port: 0
+
+spring:
+  application:
+    name: jogayjoga-court
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/jogayjoga}
+    username: ${DATABASE_USERNAME:jogayjoga}
+    password: ${DATABASE_PASSWORD:jogayjoga}
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    baseline-on-migrate: true
+    schemas: court
+  jpa:
+    properties:
+      hibernate:
+        default_schema: court
+
+management:
+  endpoints:
+    web:
+      base-path: /courts/actuator
+      exposure:
+        include: [ 'prometheus' ]
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka/}
