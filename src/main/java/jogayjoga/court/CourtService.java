@@ -27,12 +27,11 @@ public class CourtService {
         return CourtParser.to(courtRepository.findById(id).map(model -> model.to()).orElse(null));
     }
 
-    @SuppressWarnings("null")
     public CourtSportOut getFullInfo(String id){
         Court court = courtRepository.findById(id).map(model -> model.to()).orElse(null);
         if (null == court) return null;
         String sport_name = null;
-        ResponseEntity<SportOut> response = sportController.get(id);
+        ResponseEntity<SportOut> response = sportController.get(court.sportId());
         if (response != null && response.getBody() != null) {
             sport_name = response.getBody().name();
         }
