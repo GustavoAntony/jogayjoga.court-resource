@@ -3,8 +3,10 @@ package jogayjoga.court;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.ResponseEntity;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
+@Tag(name = "Court", description = "")
 public class CourtResource implements CourtController{
     @Autowired
     private CourtService courtService;
