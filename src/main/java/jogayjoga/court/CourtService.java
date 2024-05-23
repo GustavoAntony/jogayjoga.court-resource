@@ -27,6 +27,7 @@ public class CourtService {
         return CourtParser.to(courtRepository.findById(id).map(model -> model.to()).orElse(null));
     }
 
+    @SuppressWarnings("null")
     public CourtSportOut getFullInfo(String id){
         Court court = courtRepository.findById(id).map(model -> model.to()).orElse(null);
         if (null == court) return null;
