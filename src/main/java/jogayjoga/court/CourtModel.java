@@ -52,7 +52,7 @@ public class CourtModel {
         this.address = in.address();
         this.capacity = in.capacity();
         this.sportId = in.sportId();
-        this.isReserved = in.isReserved();
+        this.isReserved = false;
     }
 
     public Court to(){
