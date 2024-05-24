@@ -75,6 +75,18 @@ public class CourtService {
         return CourtOuts;
     }
 
+    public CourtOut reserveCourt(String id) {
+        // Pegar a quadra e atualizar o campo isReserved
+        CourtModel courtModel = courtRepository.findById(id).orElse(null);
+        
+        if (courtModel != null) {
+            courtModel.setReserveValue(true);
+            courtRepository.save(courtModel);
+            return CourtParser.to(courtModel.to());
+        } else {
+            return null; // Ou tratar de acordo com sua lógica de negócios
+        }
+    }
     // public CourtOut update(String id, UpdateIn in){
     //     return courtRepository.findById(id).map(model -> {
     //         model.update(in);
