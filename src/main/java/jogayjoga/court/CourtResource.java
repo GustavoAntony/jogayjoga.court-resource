@@ -1,5 +1,7 @@
 package jogayjoga.court;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +33,12 @@ public class CourtResource implements CourtController{
     public ResponseEntity<CourtSportOut> getFullInfo(String id) {
         return ResponseEntity.ok(courtService.getFullInfo(id));
     }
+
+    @Override
+    public ResponseEntity<List<CourtOut>> readall() {
+        return ResponseEntity.ok(courtService.readAll());
+    }
+    
 
     // @Override
     // public ResponseEntity<CourtOut> update(String id, CourtIn in) {

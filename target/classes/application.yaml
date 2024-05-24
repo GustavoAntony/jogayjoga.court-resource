@@ -16,6 +16,10 @@ spring:
     properties:
       hibernate:
         default_schema: court
+  redis:
+    host: my-redis
+    port: 6379
+  
 
 springdoc:
   api-docs:
