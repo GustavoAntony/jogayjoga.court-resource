@@ -5,11 +5,16 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.ResponseEntity;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+import org.springframework.web.bind.annotation.PathVariable;
+
 @RestController
 @Tag(name = "Court", description = "")
 public class CourtResource implements CourtController{
     @Autowired
     private CourtService courtService;
+
+    @Autowired 
+    private CourtMessagingService courtMessagingService;
 
     @Override
     public ResponseEntity<?> create(CourtIn in) {
@@ -36,4 +41,9 @@ public class CourtResource implements CourtController{
     // public ResponseEntity<CourtOut> update(String id, CourtIn in) {
     //     return ResponseEntity.ok(courtService.update(id, in));
     // }
+    @Override
+    public ResponseEntity<?> reserveCourt(@PathVariable String id) { // Certifique-se de definir o ID da quadra na reserva
+        courtMessagingService.sendReservation(id);
+        return ResponseEntity.ok().build();
+    }
 }

@@ -7,6 +7,7 @@ public class CourtParser {
             .address(in.address())
             .capacity(in.capacity())
             .sportId(in.sportId())
+            .isReserved(false)
             .build();
     }
 

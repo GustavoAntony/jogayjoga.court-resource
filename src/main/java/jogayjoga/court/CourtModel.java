@@ -38,12 +38,21 @@ public class CourtModel {
     @Column(name = "id_sport")
     private String sportId;
 
+    @Setter
+    @Column(name = "is_reserved")
+    private boolean isReserved;
+
+    public void setReserveValue(boolean value){
+        this.isReserved = value;
+    }
+
     public CourtModel(Court in){
         this.id = in.id();
         this.name = in.name();
         this.address = in.address();
         this.capacity = in.capacity();
         this.sportId = in.sportId();
+        this.isReserved = in.isReserved();
     }
 
     public Court to(){
@@ -52,7 +61,8 @@ public class CourtModel {
             .name(name)
             .address(address)
             .capacity(capacity)
-            .sportId(sportId);
+            .sportId(sportId)
+            .isReserved(isReserved);
     }
 
 }
