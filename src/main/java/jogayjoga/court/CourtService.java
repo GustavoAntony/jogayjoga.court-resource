@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import jogayjoga.sport.SportController;
@@ -80,7 +79,7 @@ public class CourtService {
         CourtModel courtModel = courtRepository.findById(id).orElse(null);
         
         if (courtModel != null) {
-            courtModel.setReserveValue(true);
+            courtModel.setReserveValue(1);
             courtRepository.save(courtModel);
             return CourtParser.to(courtModel.to());
         } else {
