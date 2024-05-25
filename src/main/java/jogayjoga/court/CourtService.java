@@ -28,8 +28,9 @@ public class CourtService {
     //     return courtRepository.findAll().stream().map(model -> model.to()).collect(Collectors.toList());
     // }
 
-    @Cacheable("court")
+    @Cacheable(key = "#id", value = "court", unless = "#result == null")
     public CourtOut get(String id){
+        System.out.println("Reading court id: " + id);
         return CourtParser.to(courtRepository.findById(id).map(model -> model.to()).orElse(null));
     }
 
