@@ -54,4 +54,15 @@ public class CourtResource implements CourtController{
         courtMessagingService.sendReservation(id);
         return ResponseEntity.ok().build();
     }
+
+    @Override
+    public ResponseEntity<?> delete(String id) {
+        courtService.delete(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @Override
+    public ResponseEntity<CourtOut> update(String id, CourtIn in) {
+        return ResponseEntity.ok(courtService.update(id, in));
+    }
 }

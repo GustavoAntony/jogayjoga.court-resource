@@ -9,6 +9,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import jogayjoga.sport.SportController;
 import jogayjoga.sport.SportOut;
+
 import org.springframework.http.ResponseEntity;
 
 @Service
@@ -87,6 +88,26 @@ public class CourtService {
             return null; // Ou tratar de acordo com sua lógica de negócios
         }
     }
+
+    public void delete(String id){
+        courtRepository.deleteById(id);
+    }
+
+    public CourtOut update(String id, CourtIn in){
+        Court court = courtRepository.findById(id).map(CourtModel::to).orElse(null);
+        if (court == null) {
+            // Handle the case when the court is not found
+            throw new RuntimeException("Court not found");
+        }
+        court.name(in.name()); // Fluent setter
+        court.address(in.address());
+        court.sportId(in.sportId());
+        CourtModel updatedModel = courtRepository.save(new CourtModel(court));
+
+        // Convert the updated Court object to a CourtOut object and return it
+        return CourtParser.to(updatedModel.to());
+    }
+
     // public CourtOut update(String id, UpdateIn in){
     //     return courtRepository.findById(id).map(model -> {
     //         model.update(in);
