@@ -4,7 +4,6 @@ jogayjoga\court\CourtModel$CourtModelBuilder.class
 jogayjoga\court\Court$CourtBuilder.class
 jogayjoga\court\CourtMessagingService.class
 jogayjoga\court\CourtResource.class
-jogayjoga\court\CourtReservation.class
 jogayjoga\court\Court.class
 jogayjoga\court\CourtParser.class
 jogayjoga\court\CourtService.class
